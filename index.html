@@ -56,19 +56,19 @@
 
 <center><input type="button" onclick="makeTaco();" width="50%" data-inline="true" data-icon="taco" value="Generate Taco Ipsum!"/></center><br>
 
-<div style="position: relative; width: 90%; left: 5%;">
+<div id="selectable" onclick="selectText('selectable')" style="position: relative; width: 90%; left: 5%;">
 <div id="tacowords"></div><br>
 <div id="tacowords2" style="display: none;"></div><br>
 <div id="tacowords3" style="display: none;"></div><br>
 <div id="tacowords4" style="display: none;"></div><br>
 <div id="tacowords5" style="display: none;"></div><br>
-
 </div>
 
 
 <div data-role="footer" data-position="fixed" data-theme="b">
 <div data-role="controlgroup" data-type="horizontal" style="text-align:center" data-tap-toggle="false">
 	<a onclick="clearAll();" data-role="button">Clear All</a>
+	<a onclick="selectText('selectable')" data-role="button">Select All</a>
 	<a onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LXUKHFRTL4QMS','_blank');" data-role="button">Buy Me a Taco</a>
 </div></div>
 
@@ -176,6 +176,18 @@ document.getElementById('tacowords2').style.display = 'none'
 document.getElementById('tacowords3').style.display = 'none'
 document.getElementById('tacowords4').style.display = 'none'
 document.getElementById('tacowords5').style.display = 'none'
+}
+
+function selectText(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+    }
 }
 </script>
 </body>
