@@ -1,0 +1,181 @@
+<head>
+<link rel="stylesheet" href="gh-fork-ribbon.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<title>Taco Ipsum</title>
+<style type="text/css">
+	.ui-icon-taco {
+		background-image: url("images/taco.png");
+		background-size: 18px 18px;
+	}
+</style>
+
+</head>
+
+
+<body>
+
+<div class="github-fork-ribbon-wrapper right-bottom">
+    <div class="github-fork-ribbon">
+        <a onclick="window.open('https://github.com/scrid2000/Taco-Ipsum/','_blank')">Fork me on GitHub</a>
+    </div>
+</div>
+
+
+<div data-role="page" data-theme="b">
+
+<div data-role="header" data-tap-toggle="false" data-theme="b" data-position="fixed" >
+	<h1>Taco Ipsum</h1>
+	<a onclick="window.scrollTo(0, 0)" data-role="button" data-icon="arrow-u">Top</a>
+	<a onclick="window.scrollTo(0, document.body.scrollHeight)" data-role="button" data-icon="arrow-d">Bottom</a>
+</div>
+
+<table width="100%"><tr>
+<td width="50%"><select name="length" id="length" data-native-menu="false" data-theme="b">
+		<option value="250" data-theme="b">10 Ingredients</option>
+		<option value="625" data-theme="b">25 Ingredients</option>
+		<option value="1250" data-theme="b">50 Ingredients</option>
+		<option value="1875" data-theme="b">75 Ingredients</option>
+		<option value="2500" data-theme="b">100 Ingredients</option>
+		<option value="3750" data-theme="b" selected>150 Ingredients</option>
+		<option value="5000" data-theme="b">200 Ingredients</option>
+		<option value="6250" data-theme="b">250 Ingredients</option>
+		<option value="12500" data-theme="b">500 Ingredients</option>
+		<option value="25000" data-theme="b">1000 Ingredients</option>
+</select></td>
+
+<td width="50%"><select name="paragraphs" id="paragraphs" data-native-menu="false" data-theme="b">
+		<option value="1" data-theme="b" selected>1 Paragraph</option>
+		<option value="2" data-theme="b">2 Paragraphs</option>
+		<option value="3" data-theme="b">3 Paragraphs</option>
+		<option value="4" data-theme="b">4 Paragraphs</option>
+		<option value="5" data-theme="b">5 Paragraphs</option>
+</select></td>
+</tr></table>
+
+<center><input type="button" onclick="makeTaco();" width="50%" data-inline="true" data-icon="taco" value="Generate Taco Ipsum!"/></center><br>
+
+<div style="position: relative; width: 90%; left: 5%;">
+<div id="tacowords"></div><br>
+<div id="tacowords2" style="display: none;"></div><br>
+<div id="tacowords3" style="display: none;"></div><br>
+<div id="tacowords4" style="display: none;"></div><br>
+<div id="tacowords5" style="display: none;"></div><br>
+
+</div>
+
+
+<div data-role="footer" data-position="fixed" data-theme="b">
+<div data-role="controlgroup" data-type="horizontal" style="text-align:center" data-tap-toggle="false">
+	<a onclick="clearAll();" data-role="button">Clear All</a>
+	<a onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LXUKHFRTL4QMS','_blank');" data-role="button">Buy Me a Taco</a>
+</div></div>
+
+</div>
+
+
+<script>
+function getRandom() {
+var randomnumber=Math.floor(Math.random()*44)
+//Taco
+if (randomnumber == 0) window.word = 'Taco '
+if (randomnumber == 1) window.word = 'Shell '
+if (randomnumber == 2) window.word = 'Corn Tortilla '
+if (randomnumber == 3) window.word = 'Flour Tortilla '
+if (randomnumber == 4) window.word = 'Whole Wheat Tortilla '
+
+//Cheeses
+if (randomnumber == 5) window.word = 'Cheddar '
+if (randomnumber == 6) window.word = 'Mozzarella '
+if (randomnumber == 7) window.word = 'Queso Fresco '
+if (randomnumber == 8) window.word = 'Queso Blanco '
+if (randomnumber == 9) window.word = 'Asadero '
+if (randomnumber == 10) window.word = 'Feta '
+if (randomnumber == 11) window.word = 'Ranchero  '
+if (randomnumber == 12) window.word = 'Ricotta Salata '
+if (randomnumber == 13) window.word = 'American Cheese '
+if (randomnumber == 14) window.word = 'Cheddar '
+if (randomnumber == 15) window.word = 'Monterey Jack '
+
+//Meat
+if (randomnumber == 16) window.word = 'Hamburger '
+if (randomnumber == 17) window.word = 'Turkey '
+if (randomnumber == 18) window.word = 'Chicken '
+if (randomnumber == 19) window.word = 'Pork '
+if (randomnumber == 20) window.word = 'Bacon '
+if (randomnumber == 21) window.word = 'Eggs '
+if (randomnumber == 22) window.word = 'Steak '
+if (randomnumber == 23) window.word = 'Halibut '
+if (randomnumber == 23) window.word = 'Cod '
+
+//Beans
+if (randomnumber == 25) window.word = 'Refried Beans '
+if (randomnumber == 26) window.word = 'Black Beans '
+if (randomnumber == 27) window.word = 'Pinto Beans '
+if (randomnumber == 28) window.word = 'Rice '
+if (randomnumber == 29) window.word = 'Steamed Beans '
+
+//Veggies
+if (randomnumber == 30) window.word = 'Tomato '
+if (randomnumber == 31) window.word = 'Onions '
+if (randomnumber == 32) window.word = 'Cilantro '
+if (randomnumber == 33) window.word = 'Jalapenos '
+if (randomnumber == 34) window.word = 'Guacamole '
+if (randomnumber == 35) window.word = 'Corn '
+if (randomnumber == 36) window.word = 'Red Pepper '
+if (randomnumber == 37) window.word = 'Lettuce '
+
+//Sauces and Etc.
+if (randomnumber == 38) window.word = 'Salsa '
+if (randomnumber == 38) window.word = 'Taco Sauce '
+if (randomnumber == 39) window.word = 'Lime Juice '
+if (randomnumber == 40) window.word = 'Lemon Juice '
+if (randomnumber == 41) window.word = 'Pico De Gallo '
+if (randomnumber == 42) window.word = 'Taco Seasoning '
+if (randomnumber == 43) window.word = 'Sour Cream '
+}
+
+function makeTaco() {
+getRandom()
+document.getElementById('tacowords').innerHTML = document.getElementById('tacowords').innerHTML + word
+if (document.getElementById('paragraphs').value > '1') {setTimeout("document.getElementById('tacowords2').style.display = ''; twoParagraphs();",document.getElementById('length').value)}
+if (document.getElementById('paragraphs').value > '2') {setTimeout("document.getElementById('tacowords3').style.display = ''; threeParagraphs();",parseInt(document.getElementById('length').value)*2)}
+if (document.getElementById('paragraphs').value > '3') {setTimeout("document.getElementById('tacowords4').style.display = ''; fourParagraphs(); ",parseInt(document.getElementById('length').value)*3)}
+if (document.getElementById('paragraphs').value > '4') {setTimeout("document.getElementById('tacowords5').style.display = ''; fiveParagraphs();",parseInt(document.getElementById('length').value)*4)}
+makeitgo = setTimeout("makeTaco()",25)
+setTimeout("clearTimeout(makeitgo)",document.getElementById('length').value)
+}
+
+function twoParagraphs() {
+getRandom()
+document.getElementById('tacowords2').innerHTML = document.getElementById('tacowords2').innerHTML + word
+}
+
+function threeParagraphs() {getRandom()
+document.getElementById('tacowords3').innerHTML = document.getElementById('tacowords3').innerHTML + word
+}
+
+function fourParagraphs() {
+getRandom()
+document.getElementById('tacowords4').innerHTML = document.getElementById('tacowords4').innerHTML + word
+}
+
+function fiveParagraphs() {
+getRandom()
+document.getElementById('tacowords5').innerHTML = document.getElementById('tacowords5').innerHTML + word
+}
+	
+function clearAll() {
+document.getElementById('tacowords').innerHTML = ''
+document.getElementById('tacowords2').innerHTML = ''
+document.getElementById('tacowords3').innerHTML = ''
+document.getElementById('tacowords4').innerHTML = ''
+document.getElementById('tacowords5').innerHTML = ''
+document.getElementById('tacowords2').style.display = 'none'
+document.getElementById('tacowords3').style.display = 'none'
+document.getElementById('tacowords4').style.display = 'none'
+document.getElementById('tacowords5').style.display = 'none'
+}
+</script>
+</body>
